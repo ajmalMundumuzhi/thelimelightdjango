@@ -1,0 +1,55 @@
+{% load static %}
+<div class="container p-2">
+  <div class="row">
+
+
+    {% for article in articles %}
+      <div class="col-md-3 pt-3">
+        <a href="{% url 'article_detail' article.id %}" style="text-decoration: none;">
+          <div class="card bg-dark">
+            <img src="{{ article.image.url }}" class="card-img-top" alt="...">
+            <div class="card-body" style="height:260px; overflow: hidden;">
+              <h5 class="card-title text-white">{{ article.author }}</h5>
+              <hr>
+              <a href="{% url 'article_detail' article.id %}" class="btn btn-primary text-white">ARTICLE</a>
+              <div class="card-text text-light" style="overflow: hidden; text-decoration: none;">{{ article.description|safe }}</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+
+    {% for interview in interviews %}
+      <div class="col-md-3 pt-3">
+        <a href="{% url 'interview_detail' interview.id %}" style="text-decoration: none;">
+          <div class="card bg-dark">
+            <img src="{{ interview.image.url }}" class="card-img-top" alt="...">
+            <div class="card-body" style="height:260px; overflow: hidden;">
+              <h5 class="card-title text-white">{{ interview.author }}</h5>
+              <hr>
+              <a href="{% url 'interview_detail' interview.id %}" class="btn btn-primary text-white">INTERVIEW</a>
+              <div class="card-text text-light" style="overflow: hidden; text-decoration: none;">{{ interview.description|safe }}</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+
+    {% for poem in poems %}
+      <div class="col-md-3 pt-3">
+        <a href="{% url 'poem_detail' poem.id %}" style="text-decoration: none;"> 
+          <div class="card bg-dark">
+            <img src="{{ poem.image.url }}" class="card-img-top" alt="...">
+            <div class="card-body" style="height:260px; overflow: hidden;">
+              <h5 class="card-title text-white">{{ poem.author }}</h5>
+              <hr>
+              <a href="{% url 'poem_detail' poem.id %}" class="btn btn-primary text-white">POEM</a>
+              <div class="card-text text-light" style="overflow: hidden; text-decoration: none;">{{ poem.description|safe }}</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+
+  </div>
+</div>

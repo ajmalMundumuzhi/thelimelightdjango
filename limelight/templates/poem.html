@@ -1,0 +1,30 @@
+{% extends 'blank_layout.html' %}
+{% load static %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
+
+{% block poem %}
+
+<div class="container pt-5">
+    <div class="row">
+        {% for poem in poems %}
+            <div class="col-md-3 pt-3">
+                <a href="{% url 'poem_detail' poem.id %}" style="text-decoration: none;"> 
+                    <div class="card bg-dark">
+                        <img src="{{ poem.image.url }}" class="card-img-top" alt="...">
+                        <div class="card-body" style="height:260px; overflow: hidden;">
+                            <h5 class="card-title text-white">{{ poem.author }}</h5>
+                            <hr>
+                            <a href="{% url 'poem_detail' poem.id %}" class="btn btn-primary text-white">POEM</a>
+                            <div class="card-text text-light" style="overflow: hidden; text-decoration: none;">{{ poem.description|safe }}</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}    
+    </div>
+</div>
+
+{% endblock poem %}

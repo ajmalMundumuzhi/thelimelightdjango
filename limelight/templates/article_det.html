@@ -1,0 +1,47 @@
+{% extends 'blank_layout.html' %}
+{% load static %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
+
+{% block image %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <img class="w-100 " style="height: 700px;" src="{{ article_det.image.url }}" id="responsive-image" alt="">
+        </div>
+    </div>
+</div>
+{% endblock image %}
+
+
+{% block article_detail %}
+
+<div class="container pt-5 p-4">
+    <div class="col-md-12 d-flex justify-content-center align-content-center border border-warning-subtle" style="border-radius: 25px;">
+        <div class="row">
+            <h1 class="text-center text-light p-2">{{ article_det.author }}</h1>
+            <h4 class="text-center text-light p-2">( {{ article_det.institution }} )</h4>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 pt-5">
+            <h1 class="text-white text-center">{{ article_det.title }}</h1>
+            <div class="text-light">
+                {{ article_det.detail | safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock article_detail %}
+
+<style>
+    .text-light {
+        color: #f8f9fa !important;
+    }
+</style>
